@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Here to Help</title>
+    <style>
+        :root {
+            --bg-color: #f3eece;
+            --heading-color: #1a3c28;
+            --text-color: #333333;
+            --faq-bg: #e8e8e0;
+            --faq-btn-bg: #dcdccf;
+            --badge-bg: #e3e3db;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            padding: 60px 20px;
+        }
+
+        .faq-container {
+            max-width: 680px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Header Styles */
+        .badge {
+            display: inline-block;
+            background-color: var(--badge-bg);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: #555;
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            color: var(--heading-color);
+            font-size: 3rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            margin-bottom: 40px;
+        }
+
+        /* FAQ Item Styles */
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .faq-item {
+            background-color: var(--faq-bg);
+            border-radius: 12px;
+            text-align: left;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .faq-question {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #222;
+        }
+
+        .faq-toggle {
+            background-color: var(--faq-btn-bg);
+            border: none;
+            border-radius: 8px;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            color: #333;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .faq-header:hover .faq-toggle {
+            background-color: #d0d0c3;
+        }
+
+        /* FAQ Answer/Content Styles */
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .faq-content-inner {
+            padding: 0 20px 24px 20px;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: #444;
+        }
+
+        .faq-content-inner p {
+            margin-bottom: 16px;
+        }
+
+        .faq-content-inner p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Active State */
+        .faq-item.active .faq-content {
+            max-height: 500px; /* Arbitrary large number for transition */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="faq-container">
+        <span class="badge">Frequantely Asked Questions</span>
+        <h1>Clear Your doubts here</h1>
+
+        <div class="faq-list">
+            
+            <!-- FAQ Item 1 (Open by default to match screenshot) -->
+            <div class="faq-item active">
+                <div class="faq-header">
+                    <div class="faq-question">What exactly does Understory do?</div>
+                    <button class="faq-toggle">✕</button>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-content-inner">
+                        <p>Over 1000 experience businesses – from tour guides to tasting classes – use Understory to boost bookings and revenue, save hours on admin, and deliver seamless guest experiences.</p>
+                        <p>Our all-in-one system handles bookings, payments, and marketing, so you can spend less time behind a screen and more time doing what you love – while growing your business.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div class="faq-item">
+                <div class="faq-header">
+                    <div class="faq-question">How much does it cost?</div>
+                    <button class="faq-toggle">＋</button>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-content-inner">
+                        <p>Pricing details will go here.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div class="faq-item">
+                <div class="faq-header">
+                    <div class="faq-question">Which website systems does Understory work with?</div>
+                    <button class="faq-toggle">＋</button>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-content-inner">
+                        <p>Integration details will go here.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Item 4 -->
+            <div class="faq-item">
+                <div class="faq-header">
+                    <div class="faq-question">Will this help me get more bookings?</div>
+                    <button class="faq-toggle">＋</button>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-content-inner">
+                        <p>Information on booking growth will go here.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Item 5 -->
+            <div class="faq-item">
+                <div class="faq-header">
+                    <div class="faq-question">How is Understory different from other booking systems?</div>
+                    <button class="faq-toggle">＋</button>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-content-inner">
+                        <p>Competitor comparison details will go here.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Item 6 -->
+            <div class="faq-item">
+                <div class="faq-header">
+                    <div class="faq-question">What payment solutions can I offer my guests?</div>
+                    <button class="faq-toggle">＋</button>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-content-inner">
+                        <p>Payment gateway details will go here.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Item 7 -->
+            <div class="faq-item">
+                <div class="faq-header">
+                    <div class="faq-question">How quickly can I get started with Understory?</div>
+                    <button class="faq-toggle">＋</button>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-content-inner">
+                        <p>Onboarding timeline details will go here.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Item 8 -->
+            <div class="faq-item">
+                <div class="faq-header">
+                    <div class="faq-question">Can I use Understory on my phone?</div>
+                    <button class="faq-toggle">＋</button>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-content-inner">
+                        <p>Mobile compatibility details will go here.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Item 9 -->
+            <div class="faq-item">
+                <div class="faq-header">
+                    <div class="faq-question">What if I find out that Understory is not the right fit?</div>
+                    <button class="faq-toggle">＋</button>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-content-inner">
+                        <p>Cancellation or refund policy details will go here.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Select all FAQ headers
+        const faqHeaders = document.querySelectorAll('.faq-header');
+
+        faqHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const currentItem = header.parentElement;
+                const toggleBtn = header.querySelector('.faq-toggle');
+                
+                // Toggle the 'active' class on the clicked item
+                const isActive = currentItem.classList.contains('active');
+                
+                // Optional: Close all other open FAQs (remove this block if you want multiple open at once)
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                    item.querySelector('.faq-toggle').textContent = '＋';
+                });
+
+                // If it wasn't active before, open it now and change the button to an 'X'
+                if (!isActive) {
+                    currentItem.classList.add('active');
+                    toggleBtn.textContent = '✕';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Bulletin Card</title>
+</head>
+<body>
+    
+    <!-- The DOM elements will be injected here by the script below -->
+
+    <script>
+         const cardDiv = document.createElement('div');
+
+         cardDiv.className = 'card';
+
+         const heading = document.createElement('h1');
+        heading.textContent = 'News Bulletein';
+
+         const p1 = document.createElement('p');
+        p1.textContent = 'Latest news from Vadodara';
+
+         const p2 = document.createElement('p');
+        p2.textContent = 'summary of the news goes here';
+
+         cardDiv.appendChild(heading);
+        cardDiv.appendChild(p1);
+        cardDiv.appendChild(p2);
+        document.body.appendChild(cardDiv);
+
+         cardDiv.style.cssText = 'background-color:orange; width: 400px; height: auto; padding: 20px; border-radius: 8px; font-family: sans-serif;';
+
+         p1.setAttribute('title', 'newUpdate1');
+        p2.setAttribute('title', 'newUpdate2');
+
+         console.log('p1 title attribute:', p1.getAttribute('title'));
+        console.log('p2 title attribute:', p2.getAttribute('title'));
+
+        p1.classList.add('newClass1');
+        p2.classList.add('newClass2');
+
+          p2.setAttribute('data-priority', 'item2_is_top_priority');
+    </script>
+</body>
+</html>

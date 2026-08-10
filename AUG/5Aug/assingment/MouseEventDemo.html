@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mouse Events Example</title>
+   <style>
+    body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 40px;
+  background: #f5f5f5;
+}
+
+#box {
+  width: 300px;
+  height: 150px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 2px solid #333;
+  background: #fff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  transition: background 0.2s, transform 0.1s;
+  cursor: pointer;
+}
+
+/* Hover state (mouseover) */
+#box.hover {
+  background: #e3f2fd;
+  border-color: #717c85;
+}
+
+/* Pressed state (mousedown) */
+#box.pressed {
+  background: #b9c0c6;
+  transform: scale(0.98);
+}
+
+/* Clicked state */
+#box.clicked {
+  background: #c8e6c9;
+  border-color: #4caf50;
+}
+
+p {
+  font-size: 16px;
+  margin: 8px 0;
+}
+   </style>
+</head>
+<body>
+  <h1>Mouse Events Demo</h1>
+
+  <div id="box">Move, click, or double-click me!</div>
+
+  <p id="status">Status: <span id="status-text">No event yet</span></p>
+  <p id="coords">Coordinates: <span id="coords-text">–</span></p>
+
+  <script> 
+const box = document.getElementById("box");
+const statusText = document.getElementById("status-text");
+const coordsText = document.getElementById("coords-text");
+
+// Click: change background and show message
+box.addEventListener("click", () => {
+  box.classList.add("clicked");
+  statusText.textContent = "Click event fired!";
+});
+
+// Double-click: reset styles
+box.addEventListener("dblclick", () => {
+  box.classList.remove("clicked", "hover", "pressed");
+  statusText.textContent = "Double-click: styles reset!";
+});
+
+// Mouseover: add hover style
+box.addEventListener("mouseover", () => {
+  box.classList.add("hover");
+  statusText.textContent = "Mouse is over the box.";
+});
+
+// Mouseout: remove hover style
+box.addEventListener("mouseout", () => {
+  box.classList.remove("hover");
+  statusText.textContent = "Mouse left the box.";
+});
+
+// Mousedown: visual "press"
+box.addEventListener("mousedown", () => {
+  box.classList.add("pressed");
+  statusText.textContent = "Mouse button pressed.";
+});
+
+// Mouseup: release press
+box.addEventListener("mouseup", () => {
+  box.classList.remove("pressed");
+  statusText.textContent = "Mouse button released.";
+});
+
+// Mousemove: show coordinates
+box.addEventListener("mousemove", (event) => {
+  const x = event.clientX;
+  const y = event.clientY;
+  coordsText.textContent = `X: ${x}, Y: ${y}`;
+});
+  </script>
+</body>
+</html>

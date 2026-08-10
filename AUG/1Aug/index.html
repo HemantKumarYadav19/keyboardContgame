@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List Builder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            color: #1a1a1a;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 25px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        input[type="text"] {
+            padding: 8px 10px;
+            border: 1px solid #b3b3b3;
+            width: 220px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        input[type="text"]::placeholder {
+            color: #888;
+        }
+
+        .controls button {
+            padding: 8px 15px;
+            border: 1px solid #b3b3b3;
+            background-color: #f5f5f5;
+            cursor: pointer;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .controls button:hover {
+            background-color: #e9e9e9;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .delete-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            margin-left: 10px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .delete-btn:hover {
+            background-color: #d10000;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>To-Do List Builder</h1>
+
+    <div class="controls">
+        <input type="text" id="taskInput" placeholder="Enter Task">
+        <button id="addBtn">Add</button>
+        <button id="duplicateBtn">Duplicate Last</button>
+        <button id="insertTopBtn">Insert at Top</button>
+    </div>
+
+    <ul id="taskList">
+        <li>Priority Task <button class="delete-btn">X</button></li>
+        <li>play football <button class="delete-btn">X</button></li>
+        <li>play football <button class="delete-btn">X</button></li>
+        <li>play tennis <button class="delete-btn">X</button></li>
+        <li>go for cycling <button class="delete-btn">X</button></li>
+    </ul>
+
+    <script>
+        const taskInput = document.getElementById('taskInput');
+        const addBtn = document.getElementById('addBtn');
+        const duplicateBtn = document.getElementById('duplicateBtn');
+        const insertTopBtn = document.getElementById('insertTopBtn');
+        const taskList = document.getElementById('taskList');
+
+        // Function to create a new task list item
+        function createTaskElement(taskText) {
+            const li = document.createElement('li');
+            
+            const textNode = document.createTextNode(taskText + ' ');
+            li.appendChild(textNode);
+            
+            const deleteBtn = document.createElement('button');
+            deleteBtn.textContent = 'X';
+            deleteBtn.className = 'delete-btn';
+            
+            // Add delete functionality
+            deleteBtn.addEventListener('click', function() {
+                li.remove();
+            });
+            
+            li.appendChild(deleteBtn);
+            return li;
+        }
+
+        // Initialize delete functionality for the hardcoded HTML items
+        document.querySelectorAll('.delete-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.parentElement.remove();
+            });
+        });
+
+        // Add task to the bottom
+        addBtn.addEventListener('click', () => {
+            const text = taskInput.value.trim();
+            if (text !== "") {
+                const newLi = createTaskElement(text);
+                taskList.appendChild(newLi);
+                taskInput.value = ''; 
+            }
+        });
+
+        // Duplicate the last task in the list
+        duplicateBtn.addEventListener('click', () => {
+            const lastItem = taskList.lastElementChild;
+            if (lastItem) {
+                // Extract the text content, ignoring the 'X' button text
+                let textToDuplicate = "";
+                for (let node of lastItem.childNodes) {
+                    if (node.nodeType === Node.TEXT_NODE) {
+                        textToDuplicate += node.textContent;
+                    }
+                }
+                textToDuplicate = textToDuplicate.trim();
+                
+                if (textToDuplicate !== "") {
+                    const newLi = createTaskElement(textToDuplicate);
+                    taskList.appendChild(newLi);
+                }
+            }
+        });
+
+        // Insert task at the top
+        insertTopBtn.addEventListener('click', () => {
+            const text = taskInput.value.trim();
+            if (text !== "") {
+                const newLi = createTaskElement(text);
+                taskList.insertBefore(newLi, taskList.firstChild);
+                taskInput.value = ''; 
+            }
+        });
+
+        // Optional: Allow pressing 'Enter' to add a task
+        taskInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                addBtn.click();
+            }
+        });
+    </script>
+</body>
+</html>

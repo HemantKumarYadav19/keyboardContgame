@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            color: #1a1a1a;
+            text-align: center;
+
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: #63d3f5;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="box"> </div>
+        <p class="coordinate">box</p>
+    </div>
+    <script>
+        let box = document.querySelector('.box');
+        let coordinate = document.querySelector('.coordinate');
+        box.addEventListener('mouseenter',()=>{
+            console.log("mouse enter the box")
+            coordinate.innerHTML= `coordinates: ${event.clientX},${event.clientY}`
+        })
+        box.addEventListener('mouseleave',()=>{
+            console.log("mouse leave the box")
+            coordinate.innerHTML= `coordinates: ${event.clientX},${event.clientY}`
+        })
+        box.addEventListener('dblclick',()=>{
+            console.log("mouse double click the box")
+        })
+        box.addEventListener('mousemove',(event)=>{
+            console.log(`mouse moveing........`)
+            coordinate.innerHTML= `coordinates: ${event.clientX},${event.clientY}`
+            
+        })
+        box.addEventListener('mousedown',()=>{
+            console.log("mouse button pressed down on the box")
+        })
+        
+    </script>
+</body>
+</html>

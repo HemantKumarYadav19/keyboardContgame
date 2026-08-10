@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Changer</title>
+    <style>
+        /* Default Dark Theme Variables */
+        :root {
+            --bg-color: #111520; /* Dark background matching the image */
+            --text-color: #ffffff;
+            --btn-bg: #f4f4f5;
+            --btn-text: #18181b;
+        }
+
+        /* Light Theme Variables */
+        .light-theme {
+            --bg-color: #ffffff;
+            --text-color: #111520;
+            --btn-bg: #111520;
+            --btn-text: #ffffff;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            max-width: 600px;
+            padding: 2rem;
+            margin-left: -50px; /* Adjusting alignment to match the slightly off-center look of the crop */
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 0 0 1rem 0;
+            letter-spacing: -0.025em;
+        }
+
+        p {
+            font-size: 1.15rem;
+            margin: 0 0 2rem 0;
+        }
+
+        button {
+            background-color: var(--btn-bg);
+            color: var(--btn-text);
+            border: none;
+            padding: 0.8rem 1.2rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        button:hover {
+            opacity: 0.9;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Theme Changer</h1>
+        <p>Click the button to switch the theme.</p>
+        <button id="themeToggle">Toggle Theme</button>
+    </div>
+
+    <script>
+        // Select the button element
+        const themeBtn = document.getElementById('themeToggle');
+        
+        // Add a click event listener to toggle the class on the body
+        themeBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light-theme');
+        });
+    </script>
+</body>
+</html>

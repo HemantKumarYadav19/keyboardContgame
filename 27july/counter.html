@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter App - Card Only</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            /* Centering the card on the screen */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffffff; 
+        }
+
+        .card {
+            background-color: #f8f9fa; /* Slightly off-white background matching the image */
+            width: 650px;
+            padding: 60px 20px;
+            border-radius: 4px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow to see boundaries */
+        }
+
+        .card h2 {
+            font-size: 26px;
+            color: #333333;
+            margin-bottom: 30px;
+        }
+
+        .counter-value {
+            font-size: 72px;
+            color: #3b82f6; /* Bright blue */
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        button {
+            padding: 10px 24px;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .btn-start { background-color: #4ade80; } /* Green */
+        .btn-stop { background-color: #ef4444; }  /* Red */
+        .btn-resume { background-color: #eab308; } /* Yellow */
+        .btn-reset { background-color: #6b7280; }  /* Gray */
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>Counter App</h2>
+        <div id="counter" class="counter-value">0</div>
+        
+        <div class="button-group">
+            <button id="startBtn" class="btn-start">Start</button>
+            <button id="stopBtn" class="btn-stop">Stop</button>
+            <button id="resumeBtn" class="btn-resume">Resume</button>
+            <button id="resetBtn" class="btn-reset">Reset</button>
+        </div>
+    </div>
+
+    <script>
+        let count = 0;
+        let intervalId = null;
+
+        const counterDisplay = document.getElementById("counter");
+        const startBtn = document.getElementById("startBtn");
+        const stopBtn = document.getElementById("stopBtn");
+        const resumeBtn = document.getElementById("resumeBtn");
+        const resetBtn = document.getElementById("resetBtn");
+
+        function updateDisplay() {
+            counterDisplay.textContent = count;
+        }
+
+        function startCounter() {
+            if (intervalId !== null) return; 
+            
+            intervalId = setInterval(() => {
+                count++;
+                updateDisplay();
+            }, 1000); 
+        }
+
+        startBtn.addEventListener("click", () => {
+            startCounter();
+        });
+
+        stopBtn.addEventListener("click", () => {
+            clearInterval(intervalId);
+            intervalId = null; 
+        });
+
+        resumeBtn.addEventListener("click", () => {
+            startCounter();
+        });
+
+        resetBtn.addEventListener("click", () => {
+            clearInterval(intervalId);
+            intervalId = null;
+            count = 0;
+            updateDisplay();
+        });
+    </script>
+</body>
+</html>

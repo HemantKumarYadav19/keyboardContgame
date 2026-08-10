@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attributes and Classes Example</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 100px;
+            background-color: lightblue;
+            border: 2px solid blue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: sans-serif;
+            margin-bottom: 20px;
+        }
+        
+        /* A class we want to add later */
+        .urgent-style {
+            border-color: red;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+
+     <div id="main-panel" class="box shadow">
+        Check the Console!
+    </div>
+
+    <script>
+        const boxElement = document.querySelector('.box');
+
+        if (boxElement) {
+       boxElement.setAttribute('data-priority', 'urgent');
+            
+             const currentPriority = boxElement.getAttribute('data-priority');
+            console.log("Data Attribute 'data-priority':", currentPriority);
+
+            console.log("\n--- Class Manipulation ---");
+            console.log("Original classes:", boxElement.className); 
+   
+            boxElement.classList.add('urgent-style');
+            
+            console.log("Classes after classList.add():", boxElement.className);
+         }
+    </script>
+
+</body>
+</html>

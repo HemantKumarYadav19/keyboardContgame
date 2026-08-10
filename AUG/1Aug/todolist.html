@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <h1>To-Do List Builder</h1>
+
+    <div class="controls">
+        <input type="text" id="taskInput" placeholder="Enter Task">
+        <button id="addBtn">Add</button>
+        <button id="DuplicateBtn">Duplicate Last</button>
+        <button id="InsertTopBtn">Insert at Top</button>
+
+        <ul id="taskList">
+
+        </ul>
+    </div>
+
+    <script>
+        let inputTask = document.querySelector('#taskInput');
+        let AddBtn = document.querySelector('#addBtn');
+        let DuplicateBtn = document.querySelector('#DuplicateBtn');
+        let InsertTopBtn = document.querySelector('#InsertTopBtn');
+        let taskList = document.querySelector('#taskList');
+
+        function createTaskElement(taskText) {
+            let li = document.createElement('li');
+            li.innerHTML=inputTask.value;
+
+
+            // Add delete button
+            let deleteBtn = document.createElement('button');
+            deleteBtn.textContent = 'X';
+            deleteBtn.className = 'delete-btn';
+            deleteBtn.classList.add('delete-btn');
+             deleteBtn.addEventListener('click', function() {
+            console.log('removed');
+            deleteBtn.parentElement.remove();
+        });
+            li.appendChild(deleteBtn);
+            taskList.append(li);
+            inputTask.value = '';
+        }
+        function duplicateLastTask() {
+         let lastTask= taskList.lastElementChild;
+        let dupli=lastTask.cloneNode(true);
+
+        let deleteBtn = dupli.querySelector('.delete-btn');
+        deleteBtn.addEventListener('click', function() {
+            dupli.remove();
+        });
+
+        taskList.append(dupli);  
+        }
+
+        function insertTopTask() {
+           let li = document.createElement('li');
+            li.innerHTML=inputTask.value;
+
+
+            // Add delete button
+            let deleteBtn = document.createElement('button');
+            deleteBtn.textContent = 'X';
+            deleteBtn.className = 'delete-btn';
+            deleteBtn.classList.add('delete-btn');
+             deleteBtn.addEventListener('click', function() {
+            console.log('removed');
+            deleteBtn.parentElement.remove();
+        });
+            li.appendChild(deleteBtn);
+            taskList.prepend(li);
+            inputTask.value = ''; 
+        }
+        AddBtn.addEventListener('click',createTaskElement);
+        DuplicateBtn.addEventListener('click',duplicateLastTask);
+        InsertTopBtn.addEventListener('click',insertTopTask);
+    </script>
+</body>
+</html>

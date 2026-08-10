@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task App</title>
+  </head>
+  <body>
+    <h1>Event Listners</h1>
+    <button id="btn">Change Heading</button>
+
+    <script>
+      function sayHello() {
+        // 1. Get the new text from the user
+        let newText = prompt("Enter new heading:");
+        console.log(newText);
+
+        // 2. Select the <h1> element instead of the button
+        let heading = document.querySelector("h1"); 
+        
+        // 3. Update the text of the heading
+        heading.innerText = newText;
+      }
+      
+      let btn = document.querySelector("#btn");
+      btn.addEventListener("click", sayHello);
+    </script>
+  </body>
+</html>

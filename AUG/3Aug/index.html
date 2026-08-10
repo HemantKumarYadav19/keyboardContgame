@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard Controller Game</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            color: #1a1a1a;
+            text-align: center;
+
+        }
+        #counter{
+            font-size: 48px;
+            margin: 20px 0;
+            color: #63d3f5;
+        }
+        #controlbtn{
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #3e9e3e;
+            border: none;
+            color: white;
+            border-radius: 5px;
+        }
+        #controlbtn.enabled{
+            background-color: #f16363;
+        }
+    </style>
+</head>
+<body>
+     <h1>Keyboard Controller Counter Game</h1>
+    <p> Press A to increase,D to decrease,S to reset</p>
+
+    <div id="counter">0</div>
+
+    <button id="controlbtn">Enable Controls</button>
+    <script>
+         let count=0;
+         let score=document.getElementById('counter');
+         
+         function updateCnt(){
+            score.innerHTML=count;
+         }
+         updateCnt();
+         document.addEventListener('keydown',(event)=>{
+            if(event.key==='a'){
+                count++;
+                console.log('count:',count);
+             }else if(event.key==='d'){
+                count--;
+                console.log('count:',count);
+             }else if(event.key==='s'){
+                count=0;
+                console.log('count:',count);
+             }else{
+                console.log('Invalid key pressed');
+             }
+             updateCnt();
+         })
+    </script>
+
+</body>
+</html>

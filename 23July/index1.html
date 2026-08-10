@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>DOM......</title>
+    <style>
+        body{
+            background-color: beige;
+            height: 100vh;
+            text-align: center;
+
+
+
+            display: flex;
+            align-items: center;
+            text-align: center;
+            flex-direction: column;
+            gap: 10px;
+
+
+            
+        }
+    </style>
+    <!-- <link rel='stylesheet' href='main.css'> -->
+</head>
+<body>
+
+
+<div>
+    <h1>DOM MANIPULATION</h1>
+
+    <h4>Revising Covered Topics...</h4>
+</div>
+
+    <div class="container" >
+        <p>Description 1</p>
+        <p>Summary 1</p>
+    </div>
+    
+
+<script>
+
+         let h1 = document.querySelector("h1")
+        h1.innerHTML = "REACT JS"
+        h1.style.color = "orangered";
+
+        let h4 = document.querySelector("h4")
+        h4.style.color = "green"
+        h4.innerText = "Completed All Topics";
+
+
+        let containerDiv = document.querySelector(".container")
+        containerDiv.style.backgroundColor = "white";
+        containerDiv.style.borderRadius = "10px";
+        containerDiv.style.padding = "10px";
+        containerDiv.style.width = "400px";
+
+        containerDiv.id = "container";
+        // containerDiv.className = "newContainer";
+        containerDiv.classList.add("newContainer","newContainer2");
+
+        // console.log(containerDiv.classList);
+     containerDiv.classList.replace("newContainer2","newContainer10");
+     containerDiv.classList.remove("newContainer");
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

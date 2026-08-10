@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Event Listner</h1>
+    <button id="btn">ADD TASK</button>
+    
+    <script>
+        function sayHello(){
+            let task=prompt("Enter Your Task Here")
+            console.log(task)
+        }
+        let btn =document.querySelector('#btn')
+        btn.addEventListener("click",sayHello)
+    </script>
+</body>
+</html>

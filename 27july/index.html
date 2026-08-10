@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation Demo</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+        }
+        #my-target {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- The target element -->
+    <div id="my-target">
+        Waiting for interaction...
+    </div>
+
+    <!-- The button element -->
+    <button id="my-btn">Click to Update</button>
+
+    <script>
+        // 1. target: document.querySelector
+        // We select the elements we want to interact with.
+        const targetElement = document.querySelector('#my-target');
+        const btn = document.querySelector('#my-btn');
+
+        // 5. btn.addEventListener( 'click', function( ){ } )
+        // We add an event listener to listen for click events on the button.
+        btn.addEventListener('click', function() {
+            
+            // 4. document.createElement( tagName )
+            // Create a new paragraph element dynamically.
+            const newElement = document.createElement('p');
+
+            // 2. .innerText / .innerHTML 
+            // Note: The screenshot mentions "innerContent", which is not standard. 
+            // You should use .innerText or .textContent for text, and .innerHTML for HTML tags.
+            targetElement.innerHTML = "<strong>Target Updated!</strong> ";
+            newElement.innerText = "This new element was generated using createElement.";
+
+            // 3. elementName.style.propertyName = "value"
+            // Apply inline CSS styles using JavaScript.
+            newElement.style.color = "blue";
+            newElement.style.fontWeight = "bold";
+            targetElement.style.backgroundColor = "#e0f7fa";
+
+            // Finally, append the newly created element inside our target element
+            targetElement.appendChild(newElement);
+        });
+    </script>
+</body>
+</html>

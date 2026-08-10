@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+    <style>
+     body{
+        background-color: rgb(254, 235, 235);
+        padding: 20px;
+     }
+     .para{
+        color:orangered;
+
+     }
+    </style>
+</head>
+<body>
+     
+        <h1>DOM Manipulation</h1>
+        <div class="list">
+            <!-- insert -->
+        </div>
+     
+
+    <script>
+        document.querySelector("h1").style.color="blue"
+
+        let listdiv=document.querySelector(".list")
+        listdiv.style.cssText +="background-color:rgb(259, 248, 284) ; width:50%; padding:20px; border-radius:20px; border:2px solid orange"
+
+        let newPara=document.createElement("p")
+        newPara.innerHTML="this is the new paragraph"
+
+      
+
+        newPara.className="para"
+          listdiv.appendChild(newPara)
+      </script>
+    
+</body>
+</html>

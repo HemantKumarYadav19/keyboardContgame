@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>DOM Practice Solution</title>
+<style>
+    body{
+        font-family: Arial, Helvetica, sans-serif;
+        background:#fcd9d9;
+        padding:40px;
+    }
+
+    #container{
+        display:flex;
+        flex-direction:row;
+        flex-wrap: wrap;
+        gap:20px;
+        margin-top:20px;
+    }
+
+    button{
+        padding:12px 24px;
+        border:none;
+        border-radius:8px;
+        background:rgb(139, 132, 129);
+        color:rgb(255, 247, 247);
+        cursor:pointer;
+        font-size:16px;
+    }
+	</style>
+</head>
+<body>
+
+	<button>Create Student Card</button>
+	<div id="container"></div>
+
+ <script>
+	const btn = document.querySelector("button");
+	const container = document.querySelector("#container");
+
+	btn.addEventListener("click",()=>{
+
+    // Create Card
+    const card = document.createElement("div");
+    card.className = "student-card";
+    card.id = "card1";
+    card.setAttribute("data-course","MERN");
+
+    // Heading
+    const heading = document.createElement("h2");
+    heading.textContent = "Student Profile";
+
+    // Paragraphs
+    const name = document.createElement("p");
+    name.textContent = "Name : Hemant";
+
+    const course = document.createElement("p");
+    course.textContent = "Course : Data Science";
+
+    const college = document.createElement("p");
+    college.textContent = "College : NSUT";
+
+    // Badge
+    const badge = document.createElement("span");
+    badge.textContent = "Active Student";
+    badge.className = "badge";
+
+    // Styling Card
+    card.style.backgroundColor = "white";
+    card.style.padding = "20px";
+    card.style.width = "350px";
+    card.style.border = "2px solid black";
+    card.style.borderRadius = "12px";
+    card.style.boxShadow = "0px 0px 10px gray";
+
+    badge.style.backgroundColor = "green";
+    badge.style.color = "white";
+    badge.style.padding = "8px 14px";
+    badge.style.borderRadius = "20px";
+    badge.style.display = "inline-block";
+    badge.style.marginTop = "10px";
+
+    // Append
+    card.append(
+        heading,
+        name,
+        course,
+        college,
+        badge
+    );
+
+    container.append(card);
+
+    // CLASSLIST
+    console.log(card.classList);
+    card.classList.add("premium");
+
+    console.log(card.classList);
+    card.classList.remove("premium");
+    console.log(card.classList);
+
+    card.classList.replace(
+        "student-card",
+        "developer-card"
+    );
+
+    console.log(card.classList);
+
+    console.log(card.classList.contains("developer-card"));
+    card.classList.toggle("selected");
+
+    console.log(card.classList);
+
+    card.classList.toggle("selected");
+    console.log(card.classList);
+
+    // ATTRIBUTES
+    console.log(card.getAttribute("data-course"));
+    console.log(card.hasAttribute("data-course"));
+
+    card.setAttribute("data-course","Full Stack");
+    console.log(card.getAttribute("data-course"));
+
+    card.removeAttribute("data-course");
+    console.log(card.hasAttribute("data-course"));
+
+    // DOM Traversal
+    console.log("Parent");
+    console.log(card.parentElement);
+    console.log("Container Children");
+
+    console.log(container.children);
+
+    console.log("Container ChildNodes");
+    console.log(container.childNodes);
+
+    console.log("First Child");
+    console.log(container.firstElementChild);
+
+    console.log("Last Child");
+    console.log(container.lastElementChild);
+
+    console.log("Card First Child");
+    console.log(card.firstElementChild);
+
+    console.log("Card Last Child");
+    console.log(card.lastElementChild);
+
+    // Clone Node
+    const clone = card.cloneNode(true);
+
+    clone.id = "card2";
+
+    clone.children[1].textContent = "Name : Rahul";
+    clone.children[2].textContent = "Course : Java Developer";
+
+    container.append(clone);
+
+
+    // Remove Child
+    card.removeChild(college);
+
+    // Insert Before
+    const batch = document.createElement("p");
+
+    batch.textContent = "Batch : 2026";
+    card.insertBefore(batch,course);
+
+    // Final Verification
+    console.log(container.innerHTML);
+    console.log(container.children.length);
+
+  });
+
+</script>
+</body>
+</html>
